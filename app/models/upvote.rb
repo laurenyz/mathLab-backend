@@ -1,4 +1,4 @@
 class Upvote < ApplicationRecord
-    belongs_to: voter, class_name: "User"
-    belogns_to: reply
+    belongs_to :voter, class_name: "User"
+    belongs_to :reply
 end
