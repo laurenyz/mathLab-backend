@@ -11,4 +11,17 @@ class UsersController < ApplicationController
 
         render json: user, include: [:posts, :replies]
     end
+
+    def profile
+        token = request.headers["Authentication"]
+        payload = decode(token)
+        user = User.find(payload["user_id"])
+        
+        render json: {
+                user: user,
+                posts: user.posts,
+                replies: user.replies,
+                upvotes: user.upvotes.length
+        }
+    end
 end
