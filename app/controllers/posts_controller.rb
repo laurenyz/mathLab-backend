@@ -28,7 +28,14 @@ class PostsController < ApplicationController
         end
     end
 
-    private
+    def destroy
+            post = Post.find(params[:id])
+            post.destroy
+    
+            render json: {message: "post deleted"}
+    end
+
+private
 
     def post_params
         params.require(:post).permit(:post_text, :subject, :user_id)
