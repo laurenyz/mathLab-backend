@@ -3,7 +3,9 @@ class PostsController < ApplicationController
     def index
         posts = Post.all 
 
-        render json: posts, include: [:replies, :tags, :user]
+        render :json => posts, :include => [:tags,
+                                            :user,
+                                            :replies => {:include => [:upvotes, :replier]}]
     end
 
     def show
@@ -30,6 +32,7 @@ class PostsController < ApplicationController
 
     def destroy
             post = Post.find(params[:id])
+            post.replies.each{|reply| reply.destroy}
             post.destroy
     
             render json: {message: "post deleted"}
