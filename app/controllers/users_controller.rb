@@ -3,13 +3,13 @@ class UsersController < ApplicationController
     def index
         users = User.all 
         
-        render json: users, include: [:posts, :replies]
+        render json: users
     end
 
     def show
         user = User.find(params[:id])
 
-        render json: user, include: [:posts, :replies]
+        render json: user
     end
 
     def profile
@@ -18,10 +18,7 @@ class UsersController < ApplicationController
         user = User.find(payload["user_id"])
         
         render json: {
-                user: user,
-                posts: user.posts,
-                replies: user.replies,
-                upvotes: user.upvotes.length
+                user: user
         }
     end
 
@@ -35,9 +32,6 @@ class UsersController < ApplicationController
             token = encode(payload)
             render json: {
                 user: user,
-                posts: user.posts,
-                replies: user.replies,
-                upvotes: user.upvotes.length,
                 error: false,
                 token: token
             }
