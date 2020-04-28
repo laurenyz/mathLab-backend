@@ -6,7 +6,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: {case_sensitive: false}
     validates :name, presence: true
     validates :username, presence: true
-    validates :email, presence: true
+    validates :email, format: { with: /@/ }, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 254 }
 
     def total_upvotes
         self.upvotes.count
