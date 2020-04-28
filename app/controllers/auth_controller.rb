@@ -7,8 +7,6 @@ class AuthController < ApplicationController
             token = encode(payload)
             render json: {
                 user: user,
-                posts: user.posts,
-                replies: user.replies,
                 upvotes: user.upvotes.length,
                 error: false,
                 token: token

@@ -19,7 +19,8 @@ class UsersController < ApplicationController
         user = User.find(payload["user_id"])
         
         render json: {
-                user: user
+                user: user,
+                upvotes: user.upvotes.length
         }
     end
 
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
             token = encode(payload)
             render json: {
                 user: user,
+                upvotes: user.upvotes.length,
                 error: false,
                 token: token
             }
