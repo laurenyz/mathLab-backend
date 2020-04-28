@@ -17,7 +17,7 @@ class RepliesController < ApplicationController
         if reply.valid?
             reply.save
             
-            render json: reply, include: [:upvotes, :post,]
+            render json: reply, include: [:upvotes, :post, :replier]
         else
             render json: {
                 error: true,
