@@ -9,7 +9,7 @@ class RepliesController < ApplicationController
     def show
         reply = Reply.find(params[:id])
 
-        render json: reply
+        render json: reply, include: [:upvotes, :post, :replier]
     end
 
     def create
