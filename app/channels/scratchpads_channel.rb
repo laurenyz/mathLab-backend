@@ -1,7 +1,8 @@
 class ScratchpadsChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    stream_from 'scratchpads'
+    stream_from "scratchpads_#{params[:room]}"
+    
   end
 
   def unsubscribed
@@ -11,7 +12,7 @@ class ScratchpadsChannel < ApplicationCable::Channel
   def receive(data)
     scratchpad = Scratchpad.find(data["id"])
     scratchpad.update!(scratchpad_text: data["text"])
-    ActionCable.server.broadcast('scratchpads', data)
+    ActionCable.server.broadcast("scratchpads_#{params[:room]}", data)
   end
 
 end
