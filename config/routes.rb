@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :scratchpads
   resources :upvotes
   resources :tags
   resources :replies

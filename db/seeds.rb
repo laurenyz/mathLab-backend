@@ -11,6 +11,7 @@ Post.destroy_all
 Reply.destroy_all
 Tag.destroy_all
 Upvote.destroy_all
+Scratchpad.destroy_all
 
 lauren = User.create(name: "Lauren", username: "Lauren2", email: "laureky87@yahoo.com", password: "s", image: "")
 matteo = User.create(name: "Matteo", username: "Matteo2", email: "matteo@yahoo.com", password: "s", image: "")
@@ -84,3 +85,5 @@ Upvote.create(voter: chris, reply: reply8)
 Upvote.create(voter: audrey, reply: reply1)
 Upvote.create(voter: audrey, reply: reply8)
 Upvote.create(voter: audrey, reply: reply2)
+
+first_scratchpad = Scratchpad.create(scratchpad_text: "Hello Other Browser, AKA HELLO WORLD")
