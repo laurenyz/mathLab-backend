@@ -86,4 +86,4 @@ Upvote.create(voter: audrey, reply: reply1)
 Upvote.create(voter: audrey, reply: reply8)
 Upvote.create(voter: audrey, reply: reply2)
 
-first_scratchpad = Scratchpad.create(scratchpad_text: "Hello Other Browser, AKA HELLO WORLD")
+first_scratchpad = Scratchpad.create(scratchpad_text: "Hello Other Browser, AKA HELLO WORLD", url: 1)

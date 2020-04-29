@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_04_29_153902) do
 
   create_table "scratchpads", force: :cascade do |t|
     t.text "scratchpad_text"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

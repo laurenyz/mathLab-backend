@@ -20,7 +20,10 @@ class ScratchpadsController < ApplicationController
     if @scratchpad.save
       render json: @scratchpad, status: :created, location: @scratchpad
     else
-      render json: @scratchpad.errors, status: :unprocessable_entity
+      render json: {
+        error: true,
+        message: @scratchpad.errors.full_messages
+    }
     end
   end
 
@@ -29,7 +32,10 @@ class ScratchpadsController < ApplicationController
     if @scratchpad.update(scratchpad_params)
       render json: @scratchpad
     else
-      render json: @scratchpad.errors, status: :unprocessable_entity
+      render json: {
+        error: true,
+        message: @scratchpad.errors.full_messages
+    }
     end
   end
 
@@ -41,11 +47,11 @@ class ScratchpadsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_scratchpad
-      @scratchpad = Scratchpad.find(params[:id])
+      @scratchpad = Scratchpad.find_by(url: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def scratchpad_params
-      params.require(:scratchpad).permit(:text)
+      params.require(:scratchpad).permit(:scratchpad_text, :url)
     end
 end
