@@ -47,6 +47,20 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        user = User.find(params[:id])
+        user.posts.each do |post|
+            post.replies.each do |reply|
+                reply.destroy
+            end
+            post.destroy
+        end
+        user.replies.each{|reply| reply.destroy}
+        user.destroy 
+
+        render json: {message: "user deleted"}
+    end
+
 private
 
 def user_params
