@@ -47,6 +47,24 @@ class UsersController < ApplicationController
         end
     end
 
+    def update
+        user = User.find(params[:id])
+        user.update(user_params)
+        if user.valid?
+            render json: {
+                user: user,
+                upvotes: user.upvotes.length,
+                error: false,
+            }
+        else
+            render json: {
+                error: true,
+                message: user.errors.full_messages
+            }
+        end
+    end
+
+
     def destroy
         user = User.find(params[:id])
         user.posts.each do |post|
