@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     def index
         users = User.all 
         
-        render :json => users, :include => [:replies => {:include => :upvotes}]
+        render :json => users, :include => [:iamge, :replies => {:include => :upvotes}]
     end
 
     def show
@@ -20,7 +20,8 @@ class UsersController < ApplicationController
         
         render json: {
                 user: user,
-                upvotes: user.upvotes.length
+                upvotes: user.upvotes.length,
+                image_url: user.get_image_url()
         }
     end
 
@@ -45,6 +46,27 @@ class UsersController < ApplicationController
             }
             user.delete
         end
+    end
+
+    def uploadImage
+       
+        user = User.find(profile_picture_params[:id])
+    
+        user.image.attach(profile_picture_params[:image])
+        if user.image.attached?
+            render json: {
+                user_id: user.id,
+                image_url: user.get_image_url()
+            }
+        else
+            render json: {errors: "No profile picture attached"}, status: 400
+        end
+            
+        #   profile_picture_serializer = ProfilePictureSerializer.new(profile_picture: @user.profile_picture, user: @user)
+        #   render json: profile_picture_serializer.serialize_new_profile_picture()
+        # else
+        #   render json: {errors: "No profile picture attached"}, status: 400
+        # end
     end
 
     def update
@@ -84,6 +106,10 @@ private
 def user_params
     params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :image)
 end
+
+def profile_picture_params
+    params.permit(:image, :id)
+  end
     
 end
 

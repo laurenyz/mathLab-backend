@@ -13,11 +13,11 @@ Tag.destroy_all
 Upvote.destroy_all
 Scratchpad.destroy_all
 
-lauren = User.create(name: "Lauren", username: "Lauren2", email: "laureky87@yahoo.com", password: "s", image: "")
-matteo = User.create(name: "Matteo", username: "Matteo2", email: "matteo@yahoo.com", password: "s", image: "")
-bri = User.create(name: "Bri", username: "Bri2", email: "bri@yahoo.com", password: "s", image: "")
-chris = User.create(name: "Chris", username: "Chris", email: "chris@yahoo.com", password: "s", image: "")
-audrey = User.create(name: "Audrey", username: "Audrey", email: "audrey@yahoo.com", password: "s", image: "")
+lauren = User.create(name: "Lauren", username: "Lauren2", email: "laureky87@yahoo.com", password: "s")
+matteo = User.create(name: "Matteo", username: "Matteo2", email: "matteo@yahoo.com", password: "s")
+bri = User.create(name: "Bri", username: "Bri2", email: "bri@yahoo.com", password: "s")
+chris = User.create(name: "Chris", username: "Chris", email: "chris@yahoo.com", password: "s")
+audrey = User.create(name: "Audrey", username: "Audrey", email: "audrey@yahoo.com", password: "s")
 
 post1 = Post.create(user: lauren, post_text: "Who here likes math?", subject: "Algebra")
 post2 = Post.create(user: lauren, post_text: "What is the Pythaorean Theorem?", subject: "Geometry")
