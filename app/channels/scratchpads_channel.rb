@@ -1,7 +1,6 @@
 class ScratchpadsChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    puts "SUBSCRIBED!!!!!!!!! #{ActiveCable.server.connections.length}!!!!!!!!!!!!!!"
     stream_from "scratchpads_#{params[:room]}"
   end
 
