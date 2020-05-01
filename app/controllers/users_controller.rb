@@ -17,12 +17,20 @@ class UsersController < ApplicationController
         token = request.headers["Authentication"]
         payload = decode(token)
         user = User.find(payload["user_id"])
-        
-        render json: {
+
+        if user.image.attachment
+            render json: {
                 user: user,
                 upvotes: user.upvotes.length,
                 image_url: user.get_image_url()
-        }
+            }
+        else
+            render json: {
+                user: user,
+                upvotes: user.upvotes.length,
+            }
+        end
+        
     end
 
     def create
@@ -55,7 +63,6 @@ class UsersController < ApplicationController
         user.image.attach(profile_picture_params[:image])
         if user.image.attached?
             render json: {
-                user_id: user.id,
                 image_url: user.get_image_url()
             }
         else
@@ -77,6 +84,7 @@ class UsersController < ApplicationController
                 user: user,
                 upvotes: user.upvotes.length,
                 error: false,
+                image_url: null
             }
         else
             render json: {

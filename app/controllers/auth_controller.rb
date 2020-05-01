@@ -5,16 +5,27 @@ class AuthController < ApplicationController
         if user && user.authenticate(params["password"])
             payload = {user_id: user.id}
             token = encode(payload)
-            render json: {
-                user: user,
-                upvotes: user.upvotes.length,
-                error: false,
-                token: token
-            } else 
+            if user.image.attachment
                 render json: {
-                    error: true,
-                    message: "Incorrect username/password combination."
-                }
+                    user: user,
+                    upvotes: user.upvotes.length,
+                    error: false,
+                    token: token,
+                    image_url: user.get_image_url()
+                } 
+            else 
+                render json: {
+                    user: user,
+                    upvotes: user.upvotes.length,
+                    error: false,
+                    token: token
+                } 
             end
+        else
+            render json: {
+                error: true,
+                message: "Incorrect username/password combination."
+            }
+        end
     end
 end
