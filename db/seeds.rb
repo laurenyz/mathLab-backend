@@ -19,6 +19,12 @@ bri = User.create(name: "Bri", username: "Bri2", email: "bri@yahoo.com", passwor
 chris = User.create(name: "Chris", username: "Chris", email: "chris@yahoo.com", password: "s")
 audrey = User.create(name: "Audrey", username: "Audrey", email: "audrey@yahoo.com", password: "s")
 
+lauren.default_image
+matteo.default_image
+bri.default_image
+chris.default_image
+audrey.default_image
+
 post1 = Post.create(user: lauren, post_text: "Who here likes math?", subject: "Algebra")
 post2 = Post.create(user: lauren, post_text: "What is the Pythaorean Theorem?", subject: "Geometry")
 post3 = Post.create(user: matteo, post_text: "How do you find the slope?", subject: "Algebra")

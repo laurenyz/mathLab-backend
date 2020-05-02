@@ -3,9 +3,13 @@ class PostsController < ApplicationController
     def index
         posts = Post.all 
 
-        render :json => posts, :include => [:tags,
-                                            :user,
-                                            :replies => {:include => [:upvotes, :replier]}]
+        # render json: users.to_json(({:include => [:replies => {:include => :upvotes}], :methods => :get_image_url }))
+
+        # render :json => posts, :include => [:tags,
+        #                                     :user,
+        #                                     :replies => {:include => [:upvotes, :replier]}]
+
+        render json: posts.to_json({:include => [:tags, :replies => {:include => [:upvotes, :replier => {:methods => :get_image_url}]}, :user => {:methods => :get_image_url}]})
     end
 
     def show

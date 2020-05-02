@@ -3,13 +3,13 @@ class UsersController < ApplicationController
     def index
         users = User.all 
         
-        render :json => users, :include => [:iamge, :replies => {:include => :upvotes}]
+        render json: users.to_json({:include => [:replies => {:include => :upvotes}], :methods => :get_image_url })
     end
 
     def show
         user = User.find(params[:id])
 
-        render :json => user, :include => [:replies => {:include => :upvotes}]
+        render json: user.to_json({:include => [:replies => {:include => :upvotes}], :methods => :get_image_url })
     end
 
 
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
             user.save
             payload = {user_id: user.id}
             token = encode(payload)
+            user.default_image
             render json: {
                 user: user,
                 upvotes: user.upvotes.length,

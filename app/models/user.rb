@@ -18,4 +18,9 @@ class User < ApplicationRecord
     def get_image_url
         url_for(self.image)
     end
+
+    def default_image
+        self.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'placeholder-icon.png')), filename: 'default-image.png', content_type: 'image/png')
+    end
+
 end
