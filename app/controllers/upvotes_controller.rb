@@ -20,6 +20,13 @@ class UpvotesController < ApplicationController
         end
     end
 
+    def destroy
+        upvote = Upvote.find(params[:id])
+        upvote.destroy
+        
+        render json: {message: "upvote deleted"}
+    end
+
 private
     
     def upvote_params
