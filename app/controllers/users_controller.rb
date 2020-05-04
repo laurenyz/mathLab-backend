@@ -85,7 +85,7 @@ class UsersController < ApplicationController
                 user: user,
                 upvotes: user.upvotes.length,
                 error: false,
-                image_url: null
+                image_url: user.image
             }
         else
             render json: {
