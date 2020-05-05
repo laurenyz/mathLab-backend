@@ -5,21 +5,23 @@ class AuthController < ApplicationController
         if user && user.authenticate(params["password"])
             payload = {user_id: user.id}
             token = encode(payload)
-            if user.image.attachment
+            if user.scratchpads
+                render json: {
+                    user: user,
+                    upvotes: user.upvotes.length,
+                    error: false,
+                    token: token,
+                    image_url: user.get_image_url(),
+                    scratchpads: user.scratchpads
+                    } 
+            else
                 render json: {
                     user: user,
                     upvotes: user.upvotes.length,
                     error: false,
                     token: token,
                     image_url: user.get_image_url()
-                } 
-            else 
-                render json: {
-                    user: user,
-                    upvotes: user.upvotes.length,
-                    error: false,
-                    token: token
-                } 
+                    } 
             end
         else
             render json: {

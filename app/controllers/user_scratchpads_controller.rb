@@ -16,7 +16,7 @@ class UserScratchpadsController < ApplicationController
         user_scratchpad = UserScratchpad.new(user_id: params[:user_id], name: params[:name], scratchpad_id: scratchpad.id)
         if user_scratchpad.valid?
             user_scratchpad.save
-            render json: user_scratchpad
+            render json: user_scratchpad.scratchpad
         else
             render json: {
                 error: true,
