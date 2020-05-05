@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     def show
         post = Post.find(params[:id])
 
-        render json: post, include: [:replies, :tags, :user]
+        render json: post.to_json({:include => [:tags, :replies => {:include => [:upvotes, :replier => {:methods => :get_image_url}]}, :user => {:methods => :get_image_url}]})
     end
 
     def create
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
                 if params[:tags]
                     Tag.create(post: post, tagline: params[:tags])
                 end
-            render json: post, include: [:replies, :tags, :user]
+            render json: post.to_json({:include => [:tags, :replies => {:include => [:upvotes, :replier => {:methods => :get_image_url}]}, :user => {:methods => :get_image_url}]})
         else
             render json: {
                 error: true,

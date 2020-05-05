@@ -3,13 +3,13 @@ class RepliesController < ApplicationController
     def index
         replies = Reply.all
 
-        render json: replies, include: [:upvotes, :post, :replier]
+        render json: replies, include: [:upvotes, :post, :replier => {:methods => :get_image_url}]
     end
 
     def show
         reply = Reply.find(params[:id])
 
-        render json: reply, include: [:upvotes, :post, :replier]
+        render json: reply, include: [:upvotes, :post, :replier => {:methods => :get_image_url}]
     end
 
     def create
@@ -17,7 +17,7 @@ class RepliesController < ApplicationController
         if reply.valid?
             reply.save
             
-            render json: reply, include: [:upvotes, :post, :replier]
+            render json: reply, include: [:upvotes, :post, :replier => {:methods => :get_image_url}]
         else
             render json: {
                 error: true,
