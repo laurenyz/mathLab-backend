@@ -12,7 +12,8 @@ class UserScratchpadsController < ApplicationController
     end
 
     def create
-        user_scratchpad = UserScratchpad.new(user_scratchpad_params)
+        scratchpad = Scratchpad.find_by(url: params[:url])
+        user_scratchpad = UserScratchpad.new(user_id: params[:user_id], name: params[:name], scratchpad_id: scratchpad.id)
         if user_scratchpad.valid?
             user_scratchpad.save
             render json: user_scratchpad
@@ -34,7 +35,7 @@ class UserScratchpadsController < ApplicationController
 private
 
     def user_scratchpad_params
-        params.require(:user_scratchpad).post(:user_id, :scratchpad_id, :name)
+        params.require(:user_scratchpad).post(:user_id, :scratchpad_id, :name, :url)
     end
 
 end
