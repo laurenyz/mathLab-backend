@@ -4,6 +4,7 @@ class CreateUserScratchpads < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.integer :scratchpad_id
       t.string :name
+      t.string :url
 
       t.timestamps
     end

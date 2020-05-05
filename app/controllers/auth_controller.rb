@@ -12,7 +12,7 @@ class AuthController < ApplicationController
                     error: false,
                     token: token,
                     image_url: user.get_image_url(),
-                    scratchpads: user.scratchpads
+                    scratchpads: user.user_scratchpads
                     } 
             else
                 render json: {

@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_155649) do
     t.integer "user_id"
     t.integer "scratchpad_id"
     t.string "name"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

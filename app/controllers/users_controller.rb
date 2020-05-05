@@ -23,7 +23,7 @@ class UsersController < ApplicationController
                 user: user,
                 upvotes: user.upvotes.length,
                 image_url: user.get_image_url(),
-                scratchpads: user.scratchpads
+                scratchpads: user.user_scratchpads
                 } 
         else
             render json: {
