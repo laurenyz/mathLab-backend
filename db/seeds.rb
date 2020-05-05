@@ -93,3 +93,5 @@ Upvote.create(voter: audrey, reply: reply8)
 Upvote.create(voter: audrey, reply: reply2)
 
 first_scratchpad = Scratchpad.create(scratchpad_text: "Hello Other Browser, AKA HELLO WORLD", url: 1)
+
+saved_scratchpad = UserScratchpad.create(user: lauren, scratchpad: first_scratchpad, name: "Saved Doc 1")

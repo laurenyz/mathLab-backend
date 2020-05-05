@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :posts
     has_many :replies, class_name: "Reply", foreign_key: "replier_id"
     has_many :upvotes, through: :replies
+    has_many :user_scratchpads
+    has_many :scratchpads, through: :user_scratchpads
     has_secure_password
     validates :username, uniqueness: {case_sensitive: false}
     validates :name, presence: true
