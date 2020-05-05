@@ -18,19 +18,20 @@ class UsersController < ApplicationController
         payload = decode(token)
         user = User.find(payload["user_id"])
 
-        if user.image.attachment
+        if user.scratchpads
             render json: {
                 user: user,
                 upvotes: user.upvotes.length,
-                image_url: user.get_image_url()
-            }
+                image_url: user.get_image_url(),
+                scratchpads: user.scratchpads
+                } 
         else
             render json: {
                 user: user,
                 upvotes: user.upvotes.length,
-            }
+                image_url: user.get_image_url()
+                } 
         end
-        
     end
 
     def create
