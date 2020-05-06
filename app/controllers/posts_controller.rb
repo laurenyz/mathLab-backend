@@ -23,7 +23,7 @@ class PostsController < ApplicationController
         if post.valid?
             post.save
                 if params[:tags]
-                    Tag.create(post: post, tagline: params[:tags])
+                    params[:tags].each{|tag| Tag.create(post: post, tagline: tag)}
                 end
             render json: post.to_json({:include => [:tags, :replies => {:include => [:upvotes, :replier => {:methods => :get_image_url}]}, :user => {:methods => :get_image_url}]})
         else
