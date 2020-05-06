@@ -6,7 +6,7 @@ class UserScratchpadsController < ApplicationController
     end
 
     def show
-        user_scratchpad = UserScratchpad.all
+        user_scratchpad = UserScratchpad.find(params[:id])
 
         render json: user_scratchpad
     end
@@ -27,7 +27,7 @@ class UserScratchpadsController < ApplicationController
 
     def update
         user_scratchpad = UserScratchpad.find(params[:id])
-        user_scratchpad.update(user_params)
+        user_scratchpad.update(user_scratchpad_params)
         if user_scratchpad.valid?
             render json: user_scratchpad
         else
@@ -48,7 +48,7 @@ class UserScratchpadsController < ApplicationController
 private
 
     def user_scratchpad_params
-        params.require(:user_scratchpad).post(:user_id, :scratchpad_id, :name, :url)
+        params.require(:user_scratchpad).permit(:user_id, :scratchpad_id, :name, :url)
     end
 
 end
