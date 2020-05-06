@@ -43,6 +43,7 @@ class UsersController < ApplicationController
             payload = {user_id: user.id}
             token = encode(payload)
             user.default_image
+
             render json: {
                 user: user,
                 upvotes: user.upvotes.length,
@@ -59,29 +60,23 @@ class UsersController < ApplicationController
     end
 
     def uploadImage
-       
         user = User.find(profile_picture_params[:id])
-    
         user.image.attach(profile_picture_params[:image])
         if user.image.attached?
+
             render json: {
                 image_url: user.get_image_url()
             }
         else
             render json: {errors: "No profile picture attached"}, status: 400
         end
-            
-        #   profile_picture_serializer = ProfilePictureSerializer.new(profile_picture: @user.profile_picture, user: @user)
-        #   render json: profile_picture_serializer.serialize_new_profile_picture()
-        # else
-        #   render json: {errors: "No profile picture attached"}, status: 400
-        # end
     end
 
     def update
         user = User.find(params[:id])
         user.update(user_params)
         if user.valid?
+            
             render json: {
                 user: user,
                 upvotes: user.upvotes.length,
