@@ -26,7 +26,7 @@ chris.default_image
 audrey.default_image
 
 post1 = Post.create(user: lauren, post_text: "Who here likes math?", subject: "Algebra")
-post2 = Post.create(user: lauren, post_text: "What is the Pythaorean Theorem?", subject: "Geometry")
+post2 = Post.create(user: lauren, post_text: "What is the Pythagorean Theorem?", subject: "Geometry")
 post3 = Post.create(user: matteo, post_text: "How do you find the slope?", subject: "Algebra")
 post4 = Post.create(user: matteo, post_text: "I don't understand the circle equation", subject: "Pre-Calculus")    
 post5 = Post.create(user: bri, post_text: "I'm really interested in math history.  Can someone tell me more about Pythagoras?", subject: "Algebra")
