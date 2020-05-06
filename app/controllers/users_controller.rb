@@ -48,7 +48,8 @@ class UsersController < ApplicationController
                 user: user,
                 upvotes: user.upvotes.length,
                 error: false,
-                token: token
+                token: token,
+                image_url: user.get_image_url()
             }
         else
             render json: {
@@ -81,7 +82,7 @@ class UsersController < ApplicationController
                 user: user,
                 upvotes: user.upvotes.length,
                 error: false,
-                image_url: user.image
+                image_url: user.get_image_url()
             }
         else
             render json: {
