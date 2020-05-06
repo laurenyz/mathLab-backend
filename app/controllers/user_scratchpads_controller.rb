@@ -25,6 +25,19 @@ class UserScratchpadsController < ApplicationController
         end
     end
 
+    def update
+        user_scratchpad = UserScratchpad.find(params[:id])
+        user_scratchpad.update(user_params)
+        if user_scratchpad.valid?
+            render json: user_scratchpad
+        else
+            render json: {
+                error: true,
+                message: user_scratchpad.errors.full_messages
+            }
+        end
+    end
+
     def destroy
         user_scratchpad = UserScratchpad.find(params[:id])
         user_scratchpad.destroy
