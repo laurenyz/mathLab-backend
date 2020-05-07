@@ -12,33 +12,52 @@ Reply.destroy_all
 Tag.destroy_all
 Upvote.destroy_all
 Scratchpad.destroy_all
+UserScratchpad.destroy_all
 
-lauren = User.create(name: "Lauren", username: "Lauren2", email: "laureky87@yahoo.com", password: "s")
-matteo = User.create(name: "Matteo", username: "Matteo2", email: "matteo@yahoo.com", password: "s")
-bri = User.create(name: "Bri", username: "Bri2", email: "bri@yahoo.com", password: "s")
-chris = User.create(name: "Chris", username: "Chris", email: "chris@yahoo.com", password: "s")
-audrey = User.create(name: "Audrey", username: "Audrey", email: "audrey@yahoo.com", password: "s")
+lauren = User.create(name: "Lauren Yu", username: "iLuvMath4eva", email: "lauren@yahoo.com", password: "s")
+matteo = User.create(name: "Matteo R", username: "AmyAdamsAlways", email: "matteo@yahoo.com", password: "s")
+bri = User.create(name: "Bri T", username: "dogsRmyLife", email: "bri@yahoo.com", password: "s")
+chris = User.create(name: "Chris ZZZZZZ", username: "JazzDude", email: "chris@yahoo.com", password: "s")
+alan = User.create(name: "Alan B", username: "gamer", email: "alan@yahoo.com", password: "s")
+carl = User.create(name: "Carl Parmesan", username: "FloridaGuy", email: "carl@yahoo.com", password: "s")
+jason = User.create(name: "Jason P", username: "JaSON()", email: "jason@yahoo.com", password: "s")
+paul = User.create(name: "Paul K", username: "bumbot", email: "paul@yahoo.com", password: "s")
+ryan = User.create(name: "Ryan", username: "RyRyRyan", email: "ryan@yahoo.com", password: "s")
+valentin = User.create(name: "Valentin P", username: "Vale", email: "valentin@yahoo.com", password: "s")
+wesley = User.create(name: "Wesley C", username: "Chefking", email: "wesley@yahoo.com", password: "s")
+will = User.create(name: "William 'Will' Harris", username: "Will2", email: "will@yahoo.com", password: "s")
+yo = User.create(name: "Yo P", username: "fro-YO", email: "yo@yahoo.com", password: "s")
+audrey = User.create(name: "Audrey Y", username: "OBOEOBOEOBOE", email: "audrey@yahoo.com", password: "s")
 
-lauren.default_image
-matteo.default_image
-bri.default_image
-chris.default_image
-audrey.default_image
+lauren.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'lauren.jpeg')), filename: 'lauren.jpeg', content_type: 'image/png')
+matteo.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'matteo.png')), filename: 'matteo.png', content_type: 'image/png')
+bri.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'bri.png')), filename: 'bri.png', content_type: 'image/png')
+carl.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'carl.jpeg')), filename: 'carl.jpeg', content_type: 'image/png')
+jason.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'jason.png')), filename: 'jason.png', content_type: 'image/png')
+paul.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'paul.jpeg')), filename: 'paul.jpeg', content_type: 'image/png')
+ryan.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'ryan.jpeg')), filename: 'ryan.jpeg', content_type: 'image/png')
+valentin.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'valentin.jpeg')), filename: 'valentin.jpeg', content_type: 'image/png')
+wesley.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'wesley.png')), filename: 'wesley.png', content_type: 'image/png')
+will.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'will.jpeg')), filename: 'will.jpeg', content_type: 'image/png')
+yo.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'yo.jpeg')), filename: 'yo.jpeg', content_type: 'image/png')
+alan.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'alan.jpeg')), filename: 'alan.jpeg', content_type: 'image/png')
+chris.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'chris.jpg')), filename: 'chris.jpg', content_type: 'image/png')
+audrey.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'audrey.jpeg')), filename: 'audrey.jpeg', content_type: 'image/png')
 
-post1 = Post.create(user: lauren, post_text: "Who here likes math?", subject: "Algebra")
 post2 = Post.create(user: lauren, post_text: "What is the Pythagorean Theorem?", subject: "Geometry")
 post3 = Post.create(user: matteo, post_text: "How do you find the slope?", subject: "Algebra")
-post4 = Post.create(user: matteo, post_text: "I don't understand the circle equation", subject: "Pre-Calculus")    
 post5 = Post.create(user: bri, post_text: "I'm really interested in math history.  Can someone tell me more about Pythagoras?", subject: "Algebra")
+post4 = Post.create(user: matteo, post_text: "I don't understand the circle equation", subject: "Pre-Calculus")
 post6 = Post.create(user: bri, post_text: "What is a 30-60-90 triangle?", subject: "Geometry")
-post7 = Post.create(user: chris, post_text: "Why is it called SOH CAH TOA?  I prefer TOA SOH CAH.", subject: "Trigonometry")
 post8 = Post.create(user: chris, post_text: "How can I find the sine of an angle in a right triangle?", subject: "Trigonometry")
 post9 = Post.create(user: audrey, post_text: "How do you do percents?", subject: "Pre-Algebra")
+post7 = Post.create(user: chris, post_text: "Why is it called SOH CAH TOA?  I prefer TOA SOH CAH.", subject: "Trigonometry")
 post10 = Post.create(user: audrey, post_text: "How are ratios different than fractions?", subject: "Pre-Algebra")
+post1 = Post.create(user: lauren, post_text: "Who here likes math?", subject: "Algebra")
 
 reply1 = Reply.create(replier: lauren, post: post9, reply_text: "I've always wondered that myself.")
 reply2 = Reply.create(replier: lauren, post: post7, reply_text: "This question is dumb.")
-reply3 = Reply.create(replier: matteo, post: post1, reply_text: "I like math, but mechanical engineering is where it's at.")
+reply3 = Reply.create(replier: matteo, post: post1, reply_text: "I like math, but chemical engineering is where it's at.")
 reply4 = Reply.create(replier: matteo, post: post5, reply_text: "I'm more of a Euclid guy myself.")
 reply5 = Reply.create(replier: bri, post: post1, reply_text: "Yeah, math's pretty cool.  Coding is way better, though.")
 reply6 = Reply.create(replier: bri, post: post10, reply_text: "Ratios can compare part-to-part or part-to-whole while fractions only compare part-to-whole.")
