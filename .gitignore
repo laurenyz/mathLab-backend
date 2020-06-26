@@ -22,5 +22,6 @@
 /config/master.key
 
 /config/cloudinary.yml
+/config/cable.yml
 
 .DS_Store
